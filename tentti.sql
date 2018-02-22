@@ -51,6 +51,7 @@ CREATE TABLE `kysymysvaihtoehdot` (
   `kysymysid` int(11) NOT NULL,
   `teksti` varchar(255) NOT NULL,
   `oikeatvastaukset` varchar(255) NOT NULL,
+  `vastausid` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `kysymysvaihtoehdot_kysymykset_id_fk` (`kysymysid`),
   CONSTRAINT `kysymysvaihtoehdot_kysymykset_id_fk` FOREIGN KEY (`kysymysid`) REFERENCES `kysymykset` (`id`)
@@ -63,7 +64,7 @@ CREATE TABLE `kysymysvaihtoehdot` (
 
 LOCK TABLES `kysymysvaihtoehdot` WRITE;
 /*!40000 ALTER TABLE `kysymysvaihtoehdot` DISABLE KEYS */;
-INSERT INTO `kysymysvaihtoehdot` VALUES (1,1,'Summer Quiz laugh','F'),(2,1,'Structured Query Language','T'),(3,2,'Java Database Connectivity','T'),(4,2,'Java Digital Connectivity','F'),(5,3,'Ei','F'),(6,3,'Kyllä','T');
+INSERT INTO `kysymysvaihtoehdot` VALUES (1,1,'Summer Quiz laugh','F',1),(2,1,'Structured Query Language','T',2),(3,2,'Java Database Connectivity','T',1),(4,2,'Java Digital Connectivity','F',2),(5,3,'Ei','F',1),(6,3,'Kyllä','T',2);
 /*!40000 ALTER TABLE `kysymysvaihtoehdot` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -76,4 +77,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-22 14:15:08
+-- Dump completed on 2018-02-22 14:46:19

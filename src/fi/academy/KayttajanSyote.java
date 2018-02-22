@@ -16,7 +16,7 @@ public class KayttajanSyote {
                     "Anna vastauksesi: ");
             vastaus = Integer.parseInt(lukija.nextLine());
         }
-        System.out.println("Vastasit " + vastaus);
+
     }
 
     public static int getVastaus() {

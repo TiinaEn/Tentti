@@ -26,7 +26,7 @@ CREATE TABLE `kysymykset` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Teksti` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `kysymykset` (
 
 LOCK TABLES `kysymykset` WRITE;
 /*!40000 ALTER TABLE `kysymykset` DISABLE KEYS */;
+INSERT INTO `kysymykset` VALUES (1,'Mistä SQL on lyhenne?'),(2,'Mistä JDBC on lyhenne?'),(3,'Onko select SQL:n komento?');
 /*!40000 ALTER TABLE `kysymykset` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -50,8 +51,10 @@ CREATE TABLE `kysymysvaihtoehdot` (
   `kysymysid` int(11) NOT NULL,
   `teksti` varchar(255) NOT NULL,
   `oikeatvastaukset` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `kysymysvaihtoehdot_kysymykset_id_fk` (`kysymysid`),
+  CONSTRAINT `kysymysvaihtoehdot_kysymykset_id_fk` FOREIGN KEY (`kysymysid`) REFERENCES `kysymykset` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,6 +63,7 @@ CREATE TABLE `kysymysvaihtoehdot` (
 
 LOCK TABLES `kysymysvaihtoehdot` WRITE;
 /*!40000 ALTER TABLE `kysymysvaihtoehdot` DISABLE KEYS */;
+INSERT INTO `kysymysvaihtoehdot` VALUES (1,1,'Summer Quiz laugh','F'),(2,1,'Structured Query Language','T'),(3,2,'Java Database Connectivity','T'),(4,2,'Java Digital Connectivity','F'),(5,3,'Ei','F'),(6,3,'Kyllä','T');
 /*!40000 ALTER TABLE `kysymysvaihtoehdot` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -72,4 +76,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-22 10:42:35
+-- Dump completed on 2018-02-22 14:15:08

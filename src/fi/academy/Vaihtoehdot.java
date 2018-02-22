@@ -13,13 +13,20 @@ public class Vaihtoehdot {
         prstm.setInt(1,haku);
         ResultSet rs = prstm.executeQuery();
         while (rs.next()) {
-            System.out.println(rs.getString("vastausid, ") + rs.getString("teksti"));
+            System.out.println(rs.getString("vastausid") +" "+ rs.getString("teksti"));
         }
     }
     public static void onkoOikein(Connection yhteys, int haku) throws SQLException {
-        String sql = "Select oikeatvastaukset from kysymysvaihtoehdot where kysymysid=?";
+        String sql = "Select oikeatvastaukset from kysymysvaihtoehdot where kysymysid=? AND vastausid=?";
         PreparedStatement prstm = yhteys.prepareStatement(sql);
-        prstm.setInt(1,haku);
+        prstm.setInt(1, haku);
+        prstm.setInt(2, KayttajanSyote.getVastaus());
         ResultSet rs = prstm.executeQuery();
+        while(rs.next()) {
+            System.out.println(rs.getString(1));
+        }
+
+        /*if (KayttajanSyote.getVastaus() == )
+            System.out.println("Vastasit väärin");*/
     }
 }

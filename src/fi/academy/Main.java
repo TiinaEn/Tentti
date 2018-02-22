@@ -8,6 +8,7 @@ public class Main {
             Kysymys.annaKysymys(Yhteys.luoYhteys(),Kyselija.randomHaku());
             Vaihtoehdot.vastaukset(Yhteys.luoYhteys(),Kyselija.getKysymysId());
             KayttajanSyote.kysyKayttajalta();
+            Vaihtoehdot.onkoOikein(Yhteys.luoYhteys(),Kyselija.getKysymysId() );
         }catch (ClassNotFoundException|SQLException e) {
             System.out.println(e.getMessage());
         }

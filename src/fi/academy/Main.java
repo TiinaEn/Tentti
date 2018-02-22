@@ -9,6 +9,8 @@ public class Main {
             Vaihtoehdot.vastaukset(Yhteys.luoYhteys());
 
             Yhteys.luoYhteys();
+            Kysymys.annaKysymys(Yhteys.luoYhteys(),Kyselija.randomHaku() );
+            KayttajanSyote.kysyKayttajalta();
         }catch (ClassNotFoundException|SQLException e) {
             System.out.println(e.getMessage());
         }

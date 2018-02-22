@@ -7,7 +7,6 @@ import java.sql.SQLException;
 public class Yhteys {
     public static void lataaAjuri() throws ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
-        System.out.println("Ajuri ladattu");
     }
     public static Connection luoYhteys() throws ClassNotFoundException, SQLException {
         lataaAjuri();

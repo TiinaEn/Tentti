@@ -7,12 +7,19 @@ import java.sql.SQLException;
 
 public class Vaihtoehdot {
 
-    public static void vastaukset(Connection yhteys) throws SQLException {
-        String sql = "Select teksti from kysymysvaihtoehdot";
+    public static void vastaukset(Connection yhteys, int haku) throws SQLException {
+        String sql = "Select teksti, vastausid from kysymysvaihtoehdot where kysymysid= ?";
         PreparedStatement prstm = yhteys.prepareStatement(sql);
+        prstm.setInt(1,haku);
         ResultSet rs = prstm.executeQuery();
         while (rs.next()) {
-            System.out.println("teksti");
+            System.out.println(rs.getString("vastausid, ") + rs.getString("teksti"));
         }
+    }
+    public static void onkoOikein(Connection yhteys, int haku) throws SQLException {
+        String sql = "Select oikeatvastaukset from kysymysvaihtoehdot where kysymysid=?";
+        PreparedStatement prstm = yhteys.prepareStatement(sql);
+        prstm.setInt(1,haku);
+        ResultSet rs = prstm.executeQuery();
     }
 }
